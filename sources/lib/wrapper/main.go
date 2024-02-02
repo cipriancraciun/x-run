@@ -97,6 +97,7 @@ func WrapperMain (_context *MainContext) (*Error) {
 				delete (_environmentMap, "ZRUN_LIBRARY_IDENTIFIER")
 				delete (_environmentMap, "ZRUN_LIBRARY_FINGERPRINT")
 				delete (_environmentMap, "ZRUN_EXECUTABLE")
+				delete (_environmentMap, "ZRUN_CACHE")
 				delete (_environmentMap, "UNAME_FINGERPRINT")
 				delete (_environmentMap, "UNAME_NODE")
 				delete (_environmentMap, "UNAME_SYSTEM")
