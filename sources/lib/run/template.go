@@ -135,8 +135,15 @@ func executeTemplate (_library LibraryStore, _scriptlet *Scriptlet, _context *Co
 			return templateFuncZrun (_library, _context, _scriptlet, _arguments)
 		}
 	
-	_extraFunctions["Z_select_all_labels"] = func () ([]string, error) {
+	_extraFunctions["Z_select_top_labels"] = func () ([]string, error) {
 			if _labels, _error := _library.SelectLabels (); _error == nil {
+				return _labels, nil
+			} else {
+				return nil, _error.ToError ()
+			}
+		}
+	_extraFunctions["Z_select_all_labels"] = func () ([]string, error) {
+			if _labels, _error := _library.SelectLabelsAll (); _error == nil {
 				return _labels, nil
 			} else {
 				return nil, _error.ToError ()
