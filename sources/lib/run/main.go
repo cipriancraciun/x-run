@@ -41,6 +41,7 @@ type SshContext struct {
 	launcher string
 	delegate string
 	exportEnvironment []string
+	exportEnvironmentPatterns []string
 	executablePaths []string
 	terminal string
 	workspace string
@@ -261,6 +262,9 @@ func RunMain (_executable string, _argument0 string, _arguments []string, _envir
 				} else if strings.HasPrefix (_argument, "--ssh-export=") {
 					_name := _argument[len ("--ssh-export="):]
 					_sshContext.exportEnvironment = append (_sshContext.exportEnvironment, _name)
+				} else if strings.HasPrefix (_argument, "--ssh-export-re=") {
+					_pattern := _argument[len ("--ssh-export-re="):]
+					_sshContext.exportEnvironmentPatterns = append (_sshContext.exportEnvironmentPatterns, _pattern)
 				} else if strings.HasPrefix (_argument, "--ssh-path=") {
 					_paths := filepath.SplitList (_argument[len ("--ssh-path="):])
 					for _, _path := range _paths {

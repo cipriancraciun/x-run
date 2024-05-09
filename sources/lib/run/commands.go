@@ -11,6 +11,7 @@ import "io"
 import "os"
 import "os/exec"
 import "path"
+import "regexp"
 import "sort"
 import "strings"
 import "time"
@@ -253,6 +254,7 @@ func doHandleExecuteScriptletSsh (_library LibraryStore, _scriptlet *Scriptlet, 
 	_sshLauncher := _sshContext.launcher
 	_sshDelegate := _sshContext.delegate
 	_sshExportEnvironment := _sshContext.exportEnvironment
+	_sshExportEnvironmentPatterns := _sshContext.exportEnvironmentPatterns
 	_sshExecutablePaths := _sshContext.executablePaths
 	_sshTerminal := _sshContext.terminal
 	_sshWorkspace := _sshContext.workspace
@@ -296,6 +298,24 @@ func doHandleExecuteScriptletSsh (_library LibraryStore, _scriptlet *Scriptlet, 
 		for _, _name := range _sshExportEnvironment {
 			if _value, _ok := _context.cleanEnvironment[_name]; _ok {
 				_invokeEnvironment[_name] = _value
+			}
+		}
+	}
+	if _sshExportEnvironmentPatterns != nil {
+		if _invokeEnvironment == nil {
+			_invokeEnvironment = make (map[string]string)
+		}
+		for _, _patternString := range _sshExportEnvironmentPatterns {
+			var _pattern *regexp.Regexp
+			if _pattern_0, _error := regexp.Compile (_patternString); _error == nil {
+				_pattern = _pattern_0
+			} else {
+				return false, Errorf (0x8c17e9dd, "invalid pattern:  `%s`  //  %v", _patternString, _error)
+			}
+			for _name, _value := range _context.cleanEnvironment {
+				if _pattern.MatchString (_name) {
+					_invokeEnvironment[_name] = _value
+				}
 			}
 		}
 	}
