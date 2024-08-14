@@ -27,7 +27,7 @@
 	openbsd--i686
 	openbsd--aarch64
 	
-	android--x86_64
+	android--x86_64 ##
 	android--i686 ##
 	android--aarch64
 	android--armv6 ##

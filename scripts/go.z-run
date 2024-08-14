@@ -232,8 +232,8 @@
 	printf -- '[ii]  building for `%s`...\n' 'openbsd / aarch64' >&2
 	"${ZRUN}" ':: go / build / * / debug / openbsd / aarch64' "${@}"
 	
-	printf -- '[ii]  building for `%s`...\n' 'android / x86_64' >&2
-	"${ZRUN}" ':: go / build / * / debug / android / x86_64' "${@}"
+	# printf -- '[ii]  building for `%s`...\n' 'android / x86_64' >&2
+	# "${ZRUN}" ':: go / build / * / debug / android / x86_64' "${@}"
 	# printf -- '[ii]  building for `%s`...\n' 'android / i686' >&2
 	# "${ZRUN}" ':: go / build / * / debug / android / i686' "${@}"
 	printf -- '[ii]  building for `%s`...\n' 'android / aarch64' >&2
@@ -428,8 +428,8 @@
 	printf -- '[ii]  building for `%s`...\n' 'openbsd / aarch64' >&2
 	"${ZRUN}" ':: go / build / * / release / openbsd / aarch64' "${@}"
 	
-	printf -- '[ii]  building for `%s`...\n' 'android / x86_64' >&2
-	"${ZRUN}" ':: go / build / * / release / android / x86_64' "${@}"
+	# printf -- '[ii]  building for `%s`...\n' 'android / x86_64' >&2
+	# "${ZRUN}" ':: go / build / * / release / android / x86_64' "${@}"
 	# printf -- '[ii]  building for `%s`...\n' 'android / i686' >&2
 	# "${ZRUN}" ':: go / build / * / release / android / i686' "${@}"
 	printf -- '[ii]  building for `%s`...\n' 'android / aarch64' >&2
